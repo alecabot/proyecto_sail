@@ -1,0 +1,101 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// DataTables
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+@import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
+@import 'datatables.net-select-bs5/css/select.bootstrap5.css';
+
+
+
+//.select2-selection__clear {
+//    left: calc(100% - 20px) !important;
+//}
+
+body .ck-content {
+    color: black; /* Cambia esto al color que desees para el texto en modo oscuro */
+}
+
+//.dataTables_scroll{
+//    overflow-x: auto;
+//    all: unset !important;
+//}
+//
+//.dataTables_scrollHeadInner {
+//    overflow-x: auto;
+//    all: unset !important;
+//}
+//
+//.dataTables_scrollBody {
+//    overflow-x: auto;
+//    all: unset !important;
+//}
+
+
+
+//.dataTables_scrollHeadInner  {
+//    width : 100% !important;
+//}
+
+.tamano{
+    width: 100% !important;
+}
+
+
+//
+//html[data-coreui-theme="dark"] .select2-search {
+//    background-color: #212631 !important;
+//
+//}
+//
+//html[data-coreui-theme="dark"] .select2-results__option {
+//    color: white !important;
+//
+//}
+//
+//html[data-coreui-theme="dark"] .select2-results__option:hover {
+//    color: black !important;
+//
+//}
+//
+///* Change the appearence of the search input field */
+//html[data-coreui-theme="dark"] .select2-search input {
+//    color: #ffffff !important;
+//    background-color: #212631 !important;
+//
+//}
+//
+///* Change the appearence of the search results container */
+//html[data-coreui-theme="dark"] .select2-results {
+//    background-color: #212631 !important;
+//
+//}
+//
+///* Change the appearence of the dropdown select container */
+//html[data-coreui-theme="dark"] .select2-container--bootstrap-5 .select2-selection {
+//    border-color: #323A49 !important;
+//    color: #ffffff !important;
+//    background-color: #212631 !important;
+//
+//}
+//
+//
+///* Change the caret down arrow symbol to white */
+//html[data-coreui-theme="dark"] .select2-container--bootstrap-5 .select2-selection--single {
+//    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
+//}
+//
+///* Change the color of the default selected item i.e. the first option */
+//html[data-coreui-theme="dark"] .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+//    color: #ffffff !important;
+//
+//}
+
+
