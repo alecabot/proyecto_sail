@@ -19,14 +19,15 @@
         "spatie/laravel-pdf": "^1.5",
         "spatie/laravel-permission": "^6.7",
         "wemersonjanuario/wkhtmltopdf-windows": "0.12.2.3",
-        "yajra/laravel-datatables": "^10.1"
+        "yajra/laravel-datatables": "^10.1",
+        "laravel/ui": "^4.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel-lang/common": "^6.2",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
-        "laravel/ui": "^4.5",
+
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.0",
