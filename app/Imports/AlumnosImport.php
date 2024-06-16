@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Alumno;
 use App\Models\AnioAcademico;
+use App\Models\Correo;
 use App\Models\Unidad;
 use App\Models\Curso;
 use Illuminate\Support\Facades\Validator;
@@ -84,13 +85,33 @@ class AlumnosImport implements ToModel, WithHeadingRow
         // Crear o encontrar la unidad
         $unidad = Unidad::firstOrCreate(['nombre' => $row['nombre_unidad'], 'id_curso' => $curso->id]);
 
+        $correos = explode(',', $row['correo']);
         // Crear el alumno
-        return new Alumno([
+        $alumnoNuevo = Alumno::create([
             'dni' => $row['dni'],
             'nombre' => $row['nombre'],
             'correo' => $row['correo'],
             'puntos' => 12,
             'id_unidad' => $unidad->id,
         ]);
+
+        for ($i = 0; $i < count($correos); $i++) {
+            if ($i == 0) {
+                Correo::create([
+                    'alumno_dni' => $row['dni'],
+                    'correo' => $correos[$i],
+                    'tipo' => 'personal',
+                ]);
+            } else {
+                Correo::create([
+                    'alumno_dni' => $row['dni'],
+                    'correo' => $correos[$i],
+                    'tipo' => 'tutor',
+                ]);
+            }
+
+        }
+
+        return $alumnoNuevo;
     }
 }

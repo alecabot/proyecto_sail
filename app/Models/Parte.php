@@ -36,7 +36,7 @@ class Parte extends Model
 
     public function tramoHorario()
     {
-        return $this->belongsTo(TramoHorario::class);
+        return $this->belongsTo(TramoHorario::class, 'tramo_horario_id', 'id');
     }
 
     public function conductanegativas()

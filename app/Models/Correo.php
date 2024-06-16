@@ -10,7 +10,7 @@ class Correo extends Model
     public $timestamps = false;
     protected $table = 'correos';
 
-    protected $fillable = ['alumno_dni', 'correo'];
+    protected $fillable = ['alumno_dni', 'correo','tipo'];
     use HasFactory;
 
     public function alumno () {

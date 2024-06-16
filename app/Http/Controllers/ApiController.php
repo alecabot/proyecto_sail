@@ -95,7 +95,7 @@ class ApiController extends Controller
         $puntosCrear = $request->puntosCrear;
         $idUnidadCrear = $request->idUnidadCrear;
         $alumnoCrear = new Alumno();
-        
+
         $existeDNI = Alumno::select('*')->where('dni','=',$dniAlumnoCrear)->get();
         if (count($existeDNI) > 0) {
             return response()->json([
@@ -103,7 +103,7 @@ class ApiController extends Controller
                 'errors' => ["- No creado, DNI ya registrado. <br><br>"]
             ], 422);
         }
-        
+
         // Tras comprobar el dni asignamos el resto de valores antes de guardar
         $alumnoCrear->dni = $dniAlumnoCrear;
         $alumnoCrear->nombre = $nombreCrear;
@@ -114,8 +114,8 @@ class ApiController extends Controller
         // Validamos los correos enviados antes de añadirlo, formateando el string recibido como array
         if ($listaCorreosAniadir != null) {
             for ($i = 0; $i < count($listaCorreosAniadir); $i++) {
-                if (!(filter_var($listaCorreosAniadir[$i][0], FILTER_VALIDATE_EMAIL)) 
-                && ($listaCorreosAniadir[$i][1] != "personal" || $listaCorreosAniadir[$i][1] != "tutor")) {
+                if (!(filter_var($listaCorreosAniadir[$i][0], FILTER_VALIDATE_EMAIL))
+                    && ($listaCorreosAniadir[$i][1] != "personal" || $listaCorreosAniadir[$i][1] != "tutor")) {
                     return response()->json([
                         'success' => false,
                         'errors' => ["- Datos editados, pero algunos de los correos no se han añadido por formato incorrecto. <br><br>"]
@@ -182,7 +182,7 @@ class ApiController extends Controller
             ], 422);
         }
 
-        // Revisar formato de correos añadidos 
+        // Revisar formato de correos añadidos
 
         if ($dniEditar != $dniAlumnoOriginal) {
             $existeDNI = Alumno::select('*')->where('dni','=',$dniEditar)->get();
@@ -193,7 +193,7 @@ class ApiController extends Controller
                 ], 422);
             } else {
                 $alumnoEditar->dni = $dniEditar;
-            }    
+            }
         }
         // Tras comprobar el dni asignamos el resto de valores antes de guardar
         $alumnoEditar->nombre = $nombreEditar;
@@ -216,8 +216,8 @@ class ApiController extends Controller
         // Validamos los correos enviados antes de añadirlo, formateando el string recibido como array
         if ($listaCorreosAniadir != null) {
             for ($i = 0; $i < count($listaCorreosAniadir); $i++) {
-                if (!(filter_var($listaCorreosAniadir[$i][0], FILTER_VALIDATE_EMAIL)) 
-                && ($listaCorreosAniadir[$i][1] != "personal" || $listaCorreosAniadir[$i][1] != "tutor")) {
+                if (!(filter_var($listaCorreosAniadir[$i][0], FILTER_VALIDATE_EMAIL))
+                    && ($listaCorreosAniadir[$i][1] != "personal" || $listaCorreosAniadir[$i][1] != "tutor")) {
                     return response()->json([
                         'success' => true,
                         'errors' => ["- Datos editados, pero algunos de los correos no se han añadido por formato incorrecto. <br><br>"]
@@ -234,9 +234,12 @@ class ApiController extends Controller
         if ($puntosEditar == 0) {
             foreach ($alumnoEditar->correos as $correo) {
                 Mail::to($correo->correo)->queue(new CorreoPuntosParte($alumnoEditar));
-                }
+            }
             // Correo jefatura
             Mail::to('sergioggbb02@gmail.com')->queue(new CorreoPuntosParte($alumnoEditar));
+            //Tutor
+            $mailTutor = $alumnoEditar->unidad->profesor;
+            if ($mailTutor != null) Mail::to($mailTutor->correo)->queue(new CorreoPuntosParte($alumnoEditar));
         }
 
         return response()->json([
@@ -301,7 +304,7 @@ class ApiController extends Controller
                 'errors' => $validator->errors()
             ], 422);
         }
-        
+
         $idCurso = $request->idCurso;
 
         $unidadProfesor = Unidad::select('unidades.nombre AS cursoNombre','profesors.nombre AS tutorNombre')->leftjoin('profesors','unidades.tutor_dni','=','profesors.dni')->where("id_curso","=",$idCurso)->get();
@@ -330,7 +333,7 @@ class ApiController extends Controller
             'dniTutor' => '- Problema al obtener los datos del profesor. <br>',
             'idUnidad' => '- Problema al obtener los datos de la unidad. <br>',
         ]);
-        
+
         // Se devuelve la información de los errores si ha fallado
         if ($validator->fails()) {
             return response()->json([
@@ -349,7 +352,7 @@ class ApiController extends Controller
             ], 422);
         }
 
-        
+
         $unidadComprobar = Unidad::select('*')->where('id','=',$idUnidad)->get();
         $profesorComprobar = Profesor::select('*')->where('dni','=',$dniTutor)->get();
         if (count($unidadComprobar) == 0 || count($profesorComprobar) == 0) {
@@ -385,9 +388,9 @@ class ApiController extends Controller
             $letter = substr('TRWAGMYFPDXBNJZSQVHLCKET', $start, 1);
             if($letter != $dni)
             {
-              return false;
+                return false;
             } else {
-              return true;
+                return true;
             }
         }else{
             return false;

@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="manifest" crossorigin="use-credentials" href="{{ route('laravelpwa.manifest') }}" />
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <link rel="stylesheet" href="{{asset('css/coreuicss.css')}}">

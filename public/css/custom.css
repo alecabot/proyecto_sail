@@ -29,7 +29,7 @@ body,html{
 
 
 .material-icons {
-    font-family: 'Material Icons';
+    font-family: 'Material Icons', serif;
     font-weight: normal;
     font-style: normal;
     font-size: 24px;  /* Preferred icon size */
@@ -159,16 +159,16 @@ a,a:hover,a:focus{
     display:none;
 }
 
-#sidebar::-webkit-scrollbar-thumbs{
-    width:5px;
-    border-radius:10px;
-    background-color:#333;
-    display:none;
-}
+/*#sidebar::-webkit-scrollbar-thumbs{*/
+/*    width:5px;*/
+/*    border-radius:10px;*/
+/*    background-color:#333;*/
+/*    display:none;*/
+/*}*/
 
-#sidebar:hover::-webkit-scrollbar-thumbs{
-    display:block;
-}
+/*#sidebar:hover::-webkit-scrollbar-thumbs{*/
+/*    display:block;*/
+/*}*/
 
 #sidebar:hover::-webkit-scrollbar{
     display:block;
@@ -258,7 +258,7 @@ a,a:hover,a:focus{
 #content{
     position:relative;
     transition:all 0.5s;
-    background-attachment:#f9fafc;
+
 }
 
 

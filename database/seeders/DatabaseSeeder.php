@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
             ["descripcion" => "Permanecimiento en clase durante el tiempo de recreo", 'habilitado' => false],
         ];
         foreach ($correcionesAplicadas as $correcionAplicada) \App\Models\Correccionaplicada::factory()->create($correcionAplicada);
-        
+
         $cursos = [
             ['nombre' => '1º de ESO','id_anio_academico' => 1],
             ['nombre' => '2º de ESO','id_anio_academico' => 1],
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
 
         foreach ($unidades as $unidad) \App\Models\Unidad::factory()->create($unidad);
 
-        
+
 
         $jefatura = User::factory()->create([
             'name' => 'jefatura',
@@ -119,9 +119,16 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('21700010'),
         ]);
 
+        $exposicion = User::factory()->create([
+            'name' => 'exposicion',
+            'email' => 'exposicion',
+            'password' => Hash::make('exposicion2024'),
+        ]);
+
         $jefatura->assignRole('jefatura');
         $profesor->assignRole('profesor');
-        
+        $exposicion->assignRole('jefatura');
+
         foreach (range(0, 20) as $i) {
 
             Alumno::factory()->create();
@@ -138,6 +145,6 @@ class DatabaseSeeder extends Seeder
         foreach (range(0, 20) as $i) {
             AlumnoParte::factory()->create();
         }
-        
+
     }
 }

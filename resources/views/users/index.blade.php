@@ -103,14 +103,14 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Crear nuevo parte</h1>
+                    <h1 class="modal-title fs-5" id="tituloModalParte">Crear nuevo parte</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="modalForm">
                         @csrf
 
-                            <input type="hidden" name="id" id="hiddenId" value="">
+                        <input type="hidden" name="id" id="hiddenId" value="">
 
 
                         {{--                        <input type="hidden" name="Curso" id="hiddenCurso">--}}
@@ -667,7 +667,7 @@
         });
         function crearParte() {
             document.getElementById('Fecha').value = getFecha();
-
+            $("#tituloModalParte").html('Crear nuevo parte');
             $.ajax({
                 url: '/getProfesores',
                 method: 'GET',
@@ -690,31 +690,31 @@
         }
 
 
-            // // Obtener los valores seleccionados de curso y unidad
-            // var selectedCurso = $('#Curso').val();
-            // var selectedUnidad = $('#Unidad').val();
-            //
-            // // Realiza una llamada AJAX para obtener los valores de curso y unidad
-            // $.ajax({
-            //     url: '/get-course-unit',
-            //     method: 'GET',
-            //     data: {
-            //         curso: selectedCurso,
-            //         unidad: selectedUnidad
-            //     },
-            //     success: function (response) {
-            //         // Establece los valores obtenidos en los campos ocultos
-            //         $('#hiddenCurso').val(response.curso);
-            //         $('#hiddenUnidad').val(response.unidad);
-            //     },
-            //     error: function (xhr) {
-            //         console.log(xhr.responseText);
-            //     }
-            // });
+        // // Obtener los valores seleccionados de curso y unidad
+        // var selectedCurso = $('#Curso').val();
+        // var selectedUnidad = $('#Unidad').val();
+        //
+        // // Realiza una llamada AJAX para obtener los valores de curso y unidad
+        // $.ajax({
+        //     url: '/get-course-unit',
+        //     method: 'GET',
+        //     data: {
+        //         curso: selectedCurso,
+        //         unidad: selectedUnidad
+        //     },
+        //     success: function (response) {
+        //         // Establece los valores obtenidos en los campos ocultos
+        //         $('#hiddenCurso').val(response.curso);
+        //         $('#hiddenUnidad').val(response.unidad);
+        //     },
+        //     error: function (xhr) {
+        //         console.log(xhr.responseText);
+        //     }
+        // });
 
 
         function editarParte($id) {
-
+            $("#tituloModalParte").html('Editar parte');
             $.ajax({
                 url: '/getParte/' + $id,
                 method: 'GET',
@@ -793,5 +793,3 @@
     <!-- Bootstrap Select CSS -->
 
 @endpush
-
-
